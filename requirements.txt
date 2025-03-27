@@ -1,0 +1,9 @@
+pymupdf
+pytesseract
+pillow
+google-generativeai
+streamlit 
+pdf2image  
+textwrap
+re
+sklearn
