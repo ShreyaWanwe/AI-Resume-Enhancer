@@ -5,7 +5,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Set up Google Gemini API key
-genai.configure(api_key="AIzaSyB_3TfYKwYvvLxu5E1qm8Gb9pVMuL-JN30")
+genai.configure(api_key="YOUR_GEMINI_API_KEY")
 
 def extract_entities(resume_text):
     """Extracts key entities like PERSON, ORG, and GPE from the resume."""
