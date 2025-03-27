@@ -25,11 +25,17 @@ With the power of **Google Gemini AI**, this tool ensures that your resume align
 
 ## 🎯 How It Works  
 
-1️⃣ **Upload Your Resume** – Supports **PDF, JPG, PNG** formats.  
-2️⃣ **Enter Job Description** – Paste the **job description** for matching.  
-3️⃣ **Analyze & Compare** – The tool evaluates **text similarity** & identifies **missing keywords**.  
-4️⃣ **Get AI Suggestions** – **Google Gemini AI** provides **personalized resume improvements**.  
-5️⃣ **Download PDF Report** – Get a **detailed enhancement report** with suggested changes.  
+1️. **Upload Your Resume** – Supports **PDF, JPG, PNG** formats.  
+2. **Enter Job Description** – Paste the **job description** for matching. 
+
+![image](https://github.com/user-attachments/assets/f5f65547-ba7e-4d97-a231-6d1b897940d3)
+
+3. **Analyze & Compare** – The tool evaluates **text similarity** & identifies **missing keywords**.  
+4. **Get AI Suggestions** – **Google Gemini AI** provides **personalized resume improvements**.  
+5. **Download PDF Report** – Get a **detailed enhancement report** with suggested changes.
+![image](https://github.com/user-attachments/assets/7e0ec518-fb68-47e8-8489-c1965f645fc0)
+
+
 
 
 ## Installation  
@@ -59,3 +65,5 @@ Copy
 Edit
 streamlit run app.py
 ```
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request or open an issue if you find any bugs or have suggestions for improvements. 
