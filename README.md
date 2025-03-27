@@ -55,14 +55,10 @@ venv\Scripts\activate     # For Windows
 ```
 3️⃣ Install Dependencies
 ```bash
-Copy
-Edit
 pip install -r requirements.txt
 ```
 4️⃣ Run the Streamlit App
 ```bash
-Copy
-Edit
 streamlit run app.py
 ```
 ## 🤝 Contributing
