@@ -1,8 +1,8 @@
 # AI Resume Enhancer  
 
-AI Resume Enhancer is a **smart tool** that helps job seekers optimize their resumes based on job descriptions. It **analyzes** your resume, compares it with the job posting, and provides **personalized AI-driven suggestions** for improvement.  
+AI Resume Enhancer is a smart tool that helps job seekers optimize their resumes based on job descriptions. It analyzes your resume, compares it with the job posting, and provides **personalized AI-driven suggestions** for improvement. It also **calculates an ATS (Applicant Tracking System) Score**, ensuring your resume is well-optimized for recruitment software and improving your chances of getting shortlisted!
 
-With the power of **Google Gemini AI**, this tool ensures that your resume aligns with the desired role, increasing your chances of getting shortlisted!  
+With the power of Google Gemini AI, this tool ensures that your resume aligns with the desired role, increasing your chances of getting shortlisted!
 
 
 ## Features  
@@ -10,9 +10,10 @@ With the power of **Google Gemini AI**, this tool ensures that your resume align
 - **Multi-Format Support** – Upload resumes in **PDF, JPG, or PNG** format  
 - **Text Extraction & Analysis** – Uses **OCR & NLP** to extract text from images and documents  
 - **Job Matching** – Compares the resume with the **provided job description**  
-- **Similarity Score** – Calculates how well your resume matches the job description  
+- **ATS Score Calculation** – Evaluates text similarity beyond just keywords, considering context, skills, and experience relevance  
 - **AI-Powered Suggestions** – Uses **Google Gemini AI** to improve resume content  
 - **Improvement Report** – Generates a **detailed PDF report** with actionable recommendations  
+- **Personalized Project Recommendations** – Suggests real-world projects to enhance resume strength before applying  
 - **Easy-to-Use Interface** – Built with **Streamlit** for a smooth user experience  
 
 ## Tech Stack  
@@ -28,12 +29,14 @@ With the power of **Google Gemini AI**, this tool ensures that your resume align
 1️. **Upload Your Resume** – Supports **PDF, JPG, PNG** formats.  
 2. **Enter Job Description** – Paste the **job description** for matching. 
 
-![image](https://github.com/user-attachments/assets/f5f65547-ba7e-4d97-a231-6d1b897940d3)
+![image](https://github.com/user-attachments/assets/aa811ed0-1d55-4c87-b3bc-85fddd016240)
 
-3. **Analyze & Compare** – The tool evaluates **text similarity** & identifies **missing keywords**.  
-4. **Get AI Suggestions** – **Google Gemini AI** provides **personalized resume improvements**.  
-5. **Download PDF Report** – Get a **detailed enhancement report** with suggested changes.
-![image](https://github.com/user-attachments/assets/7e0ec518-fb68-47e8-8489-c1965f645fc0)
+3. **Analyze & Compare** – The tool evaluates text similarity beyond just keywords, identifying missing skills, experience gaps, and improvement areas.
+4. **Get AI Suggestions** – **Google Gemini AI** provides **personalized resume improvements**.
+5. **ATS Score Calculation** – The tool generates an ATS compliance score based on keyword optimization, resume structure, readability, and section formatting. A higher ATS score increases your resume's chances of passing automated screenings.
+6.** Personalized Project Recommendations** – If your resume lacks certain qualifications, the tool suggests real-world projects to strengthen it before applying.  
+7. **Download PDF Report** – Get a **detailed enhancement report** with suggested changes.
+![image](https://github.com/user-attachments/assets/3fc6460d-224f-4f29-b183-ef119ada7297)
 
 
 
