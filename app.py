@@ -2,22 +2,19 @@ import streamlit as st
 import fitz  # PyMuPDF for PDF processing
 from extract_text import extract_text  # Importing from extract_text.py
 from pdf2image import convert_from_path  # Convert PDF to images for OCR
-from gemini_api import improve_resume  # Function to improve resume
+from gemini_api import improve_resume, calculate_ats_score  # Function to improve resume
 from io import BytesIO  # For PDF generation
 import textwrap
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-def calculate_similarity(resume_text, job_desc):
-    """Calculate the cosine similarity between resume and job description."""
-    vectorizer = TfidfVectorizer()
-    vectors = vectorizer.fit_transform([resume_text, job_desc])
-    similarity_score = cosine_similarity(vectors)[0, 1] * 100  # Convert to percentage
-    return round(similarity_score, 2)
 
 # Function to generate a detailed PDF report
 def generate_pdf(original_resume, suggestions):
+    if isinstance(suggestions, tuple):
+        suggestions = " ".join(map(str, suggestions))  # Convert tuple to string
+    
     pdf_bytes = BytesIO()
     doc = fitz.open()
     page = doc.new_page(width=595, height=842)  # A4 page
@@ -42,12 +39,7 @@ def generate_pdf(original_resume, suggestions):
             y_offset += fontsize + 2  # Line spacing
         return y_offset
 
-    def process_markdown(text):
-        """Detects markdown bold (**text**) and removes ** while keeping actual bold formatting."""
-        matches = re.findall(r'\*\*(.*?)\*\*', text)  # Find all occurrences of **bold text**
-        for match in matches:
-            text = text.replace(f"**{match}**", f"<b>{match}</b>")  # Replace Markdown with a placeholder
-        return text
+
 
     # Title
     y_offset = add_text(page, "Resume Review & Improvement Report", title_font_size, y_offset, bold=True)
@@ -59,8 +51,8 @@ def generate_pdf(original_resume, suggestions):
 
     # Apply Fix to Remove ** and Use Proper Bold Font
     for line in suggestions.split("\n"):
-        processed_line = process_markdown(line)  # Convert **bold** to <b>text</b>
-        
+
+        processed_line = line.strip()        
         # Detect if line contains <b> (meaning it was bold in Markdown)
         if "<b>" in processed_line:
             clean_text = processed_line.replace("<b>", "").replace("</b>", "")  # Remove HTML tags
@@ -93,13 +85,12 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.title("📄 Resume Review AI")
+st.title("AI Resume Enhancer")
 st.write("Upload your resume and get AI-powered suggestions to improve it!")
 
-# File Upload Section
-uploaded_file = st.file_uploader("Upload your Resume (PDF or Text)", type=["pdf", "txt"])
-
+uploaded_file = st.file_uploader("Upload your Resume (PDF, TXT, JPG, PNG)", type=["pdf", "txt", "jpg", "png"])
 resume_text = ""
+
 if uploaded_file:
     with st.spinner("Extracting text..."):
         if uploaded_file.type == "application/pdf":
@@ -112,49 +103,43 @@ if uploaded_file:
     st.subheader("📜 Extracted Resume Content")
     st.text_area("Preview", resume_text, height=200)
 
-# Job Description Input
 st.subheader("📝 Job Description")
 job_description = st.text_area("Enter the job description", height=150)
 ai_suggestions = ""
 
-
-# Button Click Logic (AI Suggestions only when button is clicked)
 if st.button("✨ Get AI Suggestions"):
-    if resume_text.strip() and job_description.strip():  # Ensure both fields are filled
+    if resume_text.strip() and job_description.strip():
         with st.spinner("Generating AI suggestions... 🤖"):
             try:
-                ai_suggestions = improve_resume(resume_text, job_description)  # ✅ Pass both arguments
+                ai_suggestions = improve_resume(resume_text, job_description)
                 st.subheader("💡 AI Suggestions & Improvements")
                 st.text_area("Suggested Improvements", ai_suggestions, height=200)
             except Exception as e:
-                st.error(f"⚠️ Error: {str(e)}")  # Catch any errors
+                st.error(f"⚠️ Error: {str(e)}")
     else:
         st.error("⚠️ Please provide both a resume and a job description.")
-# ✅ Only show download button if `ai_suggestions` is not empty
+
 if ai_suggestions:
-    pdf_report = generate_pdf(resume_text, ai_suggestions)  # Generate PDF
+    pdf_report = generate_pdf(resume_text, ai_suggestions)
     st.download_button(
         label="📥 Download Report as PDF",
         data=pdf_report,
         file_name="resume_review.pdf",
         mime="application/pdf"
     )
-# Resume Match Analysis
-if resume_text and ai_suggestions:
-    with st.spinner("Analyzing... 🔎"):
-        match_score = calculate_similarity(resume_text, ai_suggestions)  # Directly use extracted text
 
-        st.subheader("🔍 Resume Match Score:")
-        st.metric(label="Match Percentage", value=f"{match_score}%", delta=None)
+if resume_text and job_description:
+    with st.spinner("Analyzing ATS Score... 🔎"):
+        ats_score = calculate_ats_score(resume_text, job_description)
+        st.subheader("📊 ATS Score")
+        st.metric(label="Applicant Tracking System Score", value=f"{ats_score}%", delta=None)
 
-        # Feedback Based on Score
-        if match_score > 80:
-            st.success("✅ Great match! Your resume aligns well with the job description.")
-        elif match_score > 60:
-            st.warning("⚠️ Decent match, but consider adding more relevant keywords.")
+        if ats_score > 80:
+            st.success("✅ Strong resume! Well-optimized for ATS.")
+        elif ats_score > 60:
+            st.warning("⚠️ Decent match, but consider refining keywords.")
         else:
-            st.error("❌ Low match. Try optimizing your resume with job-specific keywords.")
+            st.error("❌ Low ATS score. Optimize your resume with job-specific keywords.")
 
-# Footer
 st.markdown("---")
 st.markdown("💡 **Tip:** Use clear, concise bullet points and quantifiable achievements in your resume!")
