@@ -10,7 +10,7 @@ With the power of Google Gemini AI, this tool ensures that your resume aligns wi
 - **Multi-Format Support** – Upload resumes in **PDF, JPG, or PNG** format  
 - **Text Extraction & Analysis** – Uses **OCR & NLP** to extract text from images and documents  
 - **Job Matching** – Compares the resume with the **provided job description**  
-- **ATS Score Calculation** – Evaluates text similarity beyond just keywords, considering context, skills, and experience relevance  
+- **ATS Score Calculation** – Evaluates ATS Score based on multiple factors keyword optimization, resume structure, readability, and section formatting. 
 - **AI-Powered Suggestions** – Uses **Google Gemini AI** to improve resume content  
 - **Improvement Report** – Generates a **detailed PDF report** with actionable recommendations  
 - **Personalized Project Recommendations** – Suggests real-world projects to enhance resume strength before applying  
