@@ -29,14 +29,17 @@ With the power of Google Gemini AI, this tool ensures that your resume aligns wi
 1️. **Upload Your Resume** – Supports **PDF, JPG, PNG** formats.  
 2. **Enter Job Description** – Paste the **job description** for matching. 
 
-![image](https://github.com/user-attachments/assets/aa811ed0-1d55-4c87-b3bc-85fddd016240)
+![image](https://github.com/user-attachments/assets/41479650-0e7f-452d-80c5-1c2bcd85033a)
+
 
 3. **Analyze & Compare** – The tool evaluates text similarity beyond just keywords, identifying missing skills, experience gaps, and improvement areas.
 4. **Get AI Suggestions** – **Google Gemini AI** provides **personalized resume improvements**.
 5. **ATS Score Calculation** – The tool generates an ATS compliance score based on keyword optimization, resume structure, readability, and section formatting. A higher ATS score increases your resume's chances of passing automated screenings.
 6. **Personalized Project Recommendations** – If your resume lacks certain qualifications, the tool suggests real-world projects to strengthen it before applying. 
 7. **Download PDF Report** – Get a **detailed enhancement report** with suggested changes.
-![image](https://github.com/user-attachments/assets/3fc6460d-224f-4f29-b183-ef119ada7297)
+   
+![image](https://github.com/user-attachments/assets/3ad0dfb7-0105-4274-97bb-9f96b10500b0)
+
 
 
 
